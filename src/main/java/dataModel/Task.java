@@ -1,6 +1,12 @@
 package dataModel;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
+
+import org.apache.poi.ss.usermodel.Cell;
 
 public class Task {
     public String getDescription() {
@@ -19,11 +25,11 @@ public class Task {
         this.date = date;
     }
 
-    public int getTime() {
+    public double getTime() {
         return time;
     }
 
-    public void setTime(int time) {
+    public void setTime(double time) {
         this.time = time;
     }
 
@@ -37,7 +43,19 @@ public class Task {
 
     String description;
     Date date;
-    int time;
+    double time;
     Employee asignee;
+
+    public void setDate(String cellValue) {
+        DateFormat format = new SimpleDateFormat("MMMM d, yyyy", Locale.ENGLISH);
+
+        try {
+            setDate(format.parse(cellValue));
+        } catch (ParseException e) {
+            e.printStackTrace();
+
+            }
+    }
+
 
 }
