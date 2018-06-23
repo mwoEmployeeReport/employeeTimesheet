@@ -37,10 +37,10 @@ public class Main {
 				String choice = input.nextLine();
 
 				if (choice.equals("1")) {
-					System.out.println("Twoj raport zosta³ wygenerowany w formacie PDF\n");
+					System.out.println("Twoj raport zostaÅ‚ wygenerowany w formacie PDF\n");
 					continue;
 				} else if (choice.equals("2")) {
-					System.out.println("Twoj raport zosta³ wygenerowany w formacie doc\n");
+					System.out.println("Twoj raport zostaÅ‚ wygenerowany w formacie doc\n");
 					continue;
 				}
 
@@ -54,10 +54,10 @@ public class Main {
 				String choice2 = input.nextLine();
 
 				if (choice2.equals("1")) {
-					System.out.println("Twoj raport zosta³ wygenerowany w formacie PDF\n");
+					System.out.println("Twoj raport zostaï¿½ wygenerowany w formacie PDF\n");
 					continue;
 				} else if (choice2.equals("2")) {
-					System.out.println("Twoj raport zosta³ wygenerowany w formacie doc\n");
+					System.out.println("Twoj raport zostaï¿½ wygenerowany w formacie doc\n");
 					continue;
 				}
 
@@ -92,4 +92,3 @@ public class Main {
 
 	}
 
-}
