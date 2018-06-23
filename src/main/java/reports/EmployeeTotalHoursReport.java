@@ -1,13 +1,24 @@
 package reports;
 
-public class EmployeeTotalHoursReport implements iReporting{
+import dataModel.Project;
+import dataModel.Task;
+
+import java.util.HashMap;
+
+public class EmployeeTotalHoursReport extends iReporting{
 
     EmployeeTotalHoursReport(){}
 
-    EmployeeTotalHoursReport(String year){}
+    @Override
+    public void calculate(int year) {
 
-    public iReporting calculate(String data) {
-        return new EmployeeTotalHoursReport(data);
+        for (Project p : dataModel.getProjectList()) {
+                for (Task t : p.getTaskList()) {
+                   if (t.getDate().getYear() == year) {
+                       innerDataModel.put(t.getAsignee().getName(), innerDataModel.getOrDefault(t.getAsignee().getName(), 0)+t.getTime());
+                   }
+                }
+            }
     }
 
     public void printReportToConsole() {

@@ -1,9 +1,19 @@
 package reports;
 
-public interface iReporting {
+import dataModel.EmployeeDataModel;
+import java.util.HashMap;
 
-    //creates the report object
-    public abstract iReporting calculate(String year);
+
+public abstract class iReporting {
+
+    EmployeeDataModel dataModel;
+    HashMap<String, Integer> innerDataModel = new HashMap<String, Integer>();
+
+    public void setDataModel(EmployeeDataModel dataModel) {
+        this.dataModel = dataModel;
+    }
+
+    public abstract void calculate(int year);
 
     public abstract void printReportToConsole();
 
