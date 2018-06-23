@@ -2,7 +2,8 @@ package dataModel;
 
 import java.util.List;
 
-public class EmployeeDataModel {
+public class TimeSheetModel {
+
     public List<Employee> getEmployeeList() {
         return employeeList;
     }
@@ -20,6 +21,7 @@ public class EmployeeDataModel {
     }
 
     List<Employee> employeeList;
+
     List<Project> projectList;
 
 }
