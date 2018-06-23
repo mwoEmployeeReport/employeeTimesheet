@@ -1,7 +1,5 @@
 package dataModel;
 
-import reports.EmployeeTotalHoursReport;
-
 import java.util.List;
 
 public class TimeSheetModel {
