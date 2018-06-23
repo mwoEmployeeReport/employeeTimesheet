@@ -4,6 +4,7 @@ import dataModel.Project;
 import dataModel.Task;
 
 import java.util.HashMap;
+import java.util.Map;
 
 public class EmployeeTotalHoursReport extends iReporting{
 
@@ -22,7 +23,9 @@ public class EmployeeTotalHoursReport extends iReporting{
     }
 
     public void printReportToConsole() {
-        System.out.println("Not yet implemented.");
+        for (Map.Entry entry : innerDataModel.entrySet()) {
+            System.out.println("Employee: " + entry.getKey() + "Time worked: " + entry.getValue() + "\n");
+        }
     }
 
     public void saveToPDF() {
