@@ -1,15 +1,15 @@
 package reports;
 
-import dataModel.EmployeeDataModel;
+import dataModel.TimeSheetModel;
 import java.util.HashMap;
 
 
 public abstract class iReporting {
 
-    EmployeeDataModel dataModel;
+    TimeSheetModel dataModel;
     HashMap<String, Integer> innerDataModel = new HashMap<String, Integer>();
 
-    public void setDataModel(EmployeeDataModel dataModel) {
+    public void setDataModel(TimeSheetModel dataModel) {
         this.dataModel = dataModel;
     }
 
