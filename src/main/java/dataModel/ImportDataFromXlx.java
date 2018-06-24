@@ -12,6 +12,7 @@ import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.xmlbeans.impl.xb.xsdschema.Public;
 
 public class ImportDataFromXlx {
 
@@ -30,8 +31,12 @@ public class ImportDataFromXlx {
 
     Employee employee = null;
 
+    public ImportDataFromXlx(){
+        timeSheetModel = new TimeSheetModel();
+    }
+
     public void readDataFromFile(File passedFile, String assignee) throws IOException {
-       timeSheetModel = new TimeSheetModel();
+
         FileInputStream inputStream = null;
         inputStream = new FileInputStream(passedFile);
         Workbook workbook = null;
