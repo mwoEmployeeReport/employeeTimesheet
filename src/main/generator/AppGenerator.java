@@ -1,18 +1,15 @@
 package main.generator;
 
+import java.awt.*;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.util.ArrayList;
-import java.util.Random;
-import java.util.Scanner;
+import java.util.*;
+import java.util.List;
 
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
-import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.ss.usermodel.Sheet;
-import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.ss.usermodel.*;
 
 
 public class AppGenerator {
@@ -25,9 +22,25 @@ public class AppGenerator {
     public static void createExel() throws IOException {
 
         Scanner read = new Scanner(System.in);
-        System.out.println("Podaj Liczbe pracownikow do wygenerowania");
         int numberEmployee = 0;
+        int month = 1;
+        int year = 2018;
+        System.out.println("Podaj Liczbe pracownikow do wygenerowania");
         numberEmployee = read.nextInt();
+        System.out.println("Podaj rok");
+        year = read.nextInt();
+        System.out.println("Podaj miesiac");
+        month = read.nextInt();
+
+
+        ArrayList<Calendar> dateList = new ArrayList<>();
+
+        for (int m = 1; m<=10; m++){
+            Calendar date = Calendar.getInstance();
+            date.set(year,m,month);
+            dateList.add(date);
+        }
+
 
         ArrayList<Object> emplyeeList = new ArrayList<>();
         emplyeeList.add("Jan_Kowalski");
@@ -48,6 +61,10 @@ public class AppGenerator {
 
         for (int i = 1; i<=numberEmployee; i++ ) {
         Workbook wb = new HSSFWorkbook();
+        CreationHelper createHelper = wb.getCreationHelper();
+            CellStyle cellStyle = wb.createCellStyle();
+            cellStyle.setDataFormat(
+                    createHelper.createDataFormat().getFormat("mm/dd/yyyy"));
             String employeeName = (String) emplyeeList.get((int) (Math.random()*6));
             try (OutputStream fileOut = new FileOutputStream(employeeName+ i + ".xls"))
             {
@@ -70,51 +87,37 @@ public class AppGenerator {
                 createSheetList.add(sheet2);
                 createSheetList.add(sheet3);
 
-                for (Sheet sh: createSheetList) {
-                    for (int k = 1; k < 10; k++) {
-                        int dataHour = luckyNumber.nextInt(10) + 1;
-                        Row row1 = sh.createRow(k);
-                        Cell cell = row1.createCell(2);
-                        cell.setCellValue(dataHour);
-                        String taskName = taskList.get((int) (Math.random()*6));
-                        cell = row1.createCell(1);
-                        cell.setCellValue(taskName);
-                    }
-                }
+                randomData(dateList, taskList, cellStyle, luckyNumber, createSheetList);
 
-
-                //randomHours(luckyNumber, createSheetList);
-
-               /* for (Sheet sh: createSheetList) {
-                    for (int n = 1; n < 10; n++) {
-                        String taskName = taskList.get((int) (Math.random()*6));
-                       // int dataHour = luckyNumber.nextInt(10) + 1;
-                        Row row1 = sh.createRow(n);
-                        Cell cell = row1.createCell(1);
-                        cell.setCellValue(taskName);
-                    }
-                }*/
-
-
-
-               wb.write(fileOut);
+                wb.write(fileOut);
                 fileOut.close();
                 wb.close();
             }
         }
     }
 
-   /* public static void randomHours(Random luckyNumber, ArrayList<Sheet> createSheetList) {
+    public static void randomData(ArrayList<Calendar> dateList, ArrayList<String> taskList, CellStyle cellStyle, Random luckyNumber, ArrayList<Sheet> createSheetList) {
         for (Sheet sh: createSheetList) {
-            for (int k = 1; k < 10; k++) {
+            for (int k = 1; k < 21; k++) {
                 int dataHour = luckyNumber.nextInt(10) + 1;
                 Row row1 = sh.createRow(k);
                 Cell cell = row1.createCell(2);
                 cell.setCellValue(dataHour);
+                String taskName = taskList.get((int) (Math.random()*6));
+                cell = row1.createCell(1);
+                cell.setCellValue(taskName);
+                Calendar setDate = dateList.get((int) (Math.random() *10));
+                cell = row1.createCell(0);
+                cell.setCellValue(setDate);
+                cell.setCellStyle(cellStyle);
+                sh.autoSizeColumn(0);
+                sh.autoSizeColumn(1);
+                sh.autoSizeColumn(2);
 
             }
         }
-    }*/
+    }
+
 
     private static void inputData(Row row){
         Cell cell1 = row.createCell(0);
@@ -126,6 +129,7 @@ public class AppGenerator {
         cell1.setCellValue("Czas [h]");
 
     }
+
 }
 
 
