@@ -17,7 +17,7 @@ public class Main {
         while (!isLoggedIn) {
 
             System.out.println("Z ponizszej listy wybierz numer raportu/ wykresu, ktory chcesz wygenerowac\n");
-            System.out.println("0 - Podaj sciezke do pliku'");
+            System.out.println("0 - Podaj lokalizacje folderu");
             System.out.println("1 - Raport: 'Ilosc godzin przepracowanych przez poszczegolnych pracownikow w wybranym roku'");
             System.out.println("2 - Raport: 'Ilosc godzin przepracowanych nad danym projektem w wybranym roku'");
             System.out.println("3 - Raport: 'Ilosc godzin przepracowanych przez danego pracownika z podzialem na projekty i miesiace'");
@@ -36,7 +36,7 @@ public class Main {
                 case "0":
 
                     System.out.println(
-                            "Podaj siezke do pliku");
+                            "Podaj lokalizacje folderu");
 
                     String path = input.nextLine();
 

@@ -26,9 +26,6 @@ public class ImportDataFromXlx {
         this.timeSheetModel = timeSheetModel;
     }
 
-    TimeSheetModel timeSheetModel = new TimeSheetModel();
-
-
     Project newProject;
 
     Employee employee = null;
