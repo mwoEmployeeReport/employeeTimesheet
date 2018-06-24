@@ -1,4 +1,3 @@
-
 import java.io.File;
 import java.io.IOException;
 import java.util.Scanner;
@@ -8,12 +7,10 @@ import reports.EmployeePerProjectPerMonth;
 import reports.EmployeeTotalHoursReport;
 import reports.ProjectTotalHoursReport;
 
-
 public class Main {
 
     public static void main(String[] args) throws IOException {
         ImportDataFromXlx importDataFromXlx = new ImportDataFromXlx();
-
 
         boolean isLoggedIn = false;
 
@@ -37,8 +34,7 @@ public class Main {
             switch (value) {
 
                 case "0":
-                    System.out.println(
-                            "Podaj lokalizacje folderu");
+                    System.out.println("Podaj lokalizacje folderu");
                     String path = input.nextLine();
 
                     if (!path.equals(null)) {
@@ -52,8 +48,7 @@ public class Main {
                     }
 
                 case "1":
-                	System.out.println(
-                            "Podaj rok");
+                    System.out.println("Podaj rok");
                     String choice = input.nextLine();
                     EmployeeTotalHoursReport employeeTotalHoursReport = new EmployeeTotalHoursReport();
                     employeeTotalHoursReport.setDataModel(importDataFromXlx.getTimeSheetModel());
@@ -75,9 +70,8 @@ public class Main {
                     break;
 
                 case "2":
-                	
-                	System.out.println(
-                            "Podaj rok");
+
+                    System.out.println("Podaj rok");
                     String choice11 = input.nextLine();
                     ProjectTotalHoursReport ProjectTotalHoursReport = new ProjectTotalHoursReport();
                     ProjectTotalHoursReport.setDataModel(importDataFromXlx.getTimeSheetModel());
@@ -96,18 +90,17 @@ public class Main {
                         continue;
                     }
 
-
                     break;
                 case "3":
-                	System.out.println("Podaj nazwisko pracownika");
-                	String choice5 = input.nextLine();
-                	System.out.println("Podaj rok");
-                	String choice1 = input.nextLine();
-                	EmployeePerProjectPerMonth employeePerProjectPerMonth = new EmployeePerProjectPerMonth();
-                	employeePerProjectPerMonth.setDataModel(importDataFromXlx.getTimeSheetModel());
-                	employeePerProjectPerMonth.calculate(choice5,choice1);
-                	employeePerProjectPerMonth.printReportToConsole();
-                	System.out.println(
+                    System.out.println("Podaj nazwisko pracownika");
+                    String choice5 = input.nextLine();
+                    System.out.println("Podaj rok");
+                    String choice3 = input.nextLine();
+                    EmployeePerProjectPerMonth employeePerProjectPerMonth = new EmployeePerProjectPerMonth();
+                    employeePerProjectPerMonth.setDataModel(importDataFromXlx.getTimeSheetModel());
+                    employeePerProjectPerMonth.calculate(choice5, choice3);
+                    employeePerProjectPerMonth.printReportToConsole();
+                    System.out.println(
                             "Jesli chcesz importowac raport do formatu PDF nacisnij 1, jesli do formatu doc wcisnij 2. Jesli chcesz wrocic do menu glownego wcisnij cokolwiek");
 
                     String choice6 = input.nextLine();
