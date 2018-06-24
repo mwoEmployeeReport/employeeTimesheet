@@ -6,6 +6,8 @@ import java.util.Scanner;
 import dataModel.ImportDataFromXlx;
 import reports.EmployeePerProjectPerMonth;
 import reports.EmployeeTotalHoursReport;
+import reports.ProjectTotalHoursReport;
+
 
 public class Main {
 
@@ -50,17 +52,22 @@ public class Main {
                     }
 
                 case "1":
-                    System.out.println(
+                	System.out.println(
                             "Podaj rok");
                     String choice = input.nextLine();
                     EmployeeTotalHoursReport employeeTotalHoursReport = new EmployeeTotalHoursReport();
                     employeeTotalHoursReport.setDataModel(importDataFromXlx.getTimeSheetModel());
                     employeeTotalHoursReport.calculate(Integer.valueOf(choice));
                     employeeTotalHoursReport.printReportToConsole();
-                    if (choice.equals("1")) {
+                    System.out.println(
+                            "To jest Twoj raport. Jesli chcesz importowac raport do formatu PDF nacisnij 1, jesli do formatu doc wcisnij 2. Jesli chcesz wrocic do menu glownego wcisnij cokolwiek");
+
+                    String choice1 = input.nextLine();
+
+                    if (choice1.equals("1")) {
                         System.out.println("Twoj raport został wygenerowany w formacie PDF\n");
                         continue;
-                    } else if (choice.equals("2")) {
+                    } else if (choice1.equals("2")) {
                         System.out.println("Twoj raport został wygenerowany w formacie doc\n");
                         continue;
                     }
@@ -68,19 +75,27 @@ public class Main {
                     break;
 
                 case "2":
-
+                	
+                	System.out.println(
+                            "Podaj rok");
+                    String choice11 = input.nextLine();
+                    ProjectTotalHoursReport ProjectTotalHoursReport = new ProjectTotalHoursReport();
+                    ProjectTotalHoursReport.setDataModel(importDataFromXlx.getTimeSheetModel());
+                    ProjectTotalHoursReport.calculate(Integer.valueOf(choice11));
+                    ProjectTotalHoursReport.printReportToConsole();
                     System.out.println(
                             "To jest Twoj raport. Jesli chcesz importowac raport do formatu PDF nacisnij 1, jesli do formatu doc wcisnij 2. Jesli chcesz wrocic do menu glownego wcisnij cokolwiek");
 
                     String choice2 = input.nextLine();
 
                     if (choice2.equals("1")) {
-                        System.out.println("Twoj raport zosta� wygenerowany w formacie PDF\n");
+                        System.out.println("Twoj raport został wygenerowany w formacie PDF\n");
                         continue;
                     } else if (choice2.equals("2")) {
-                        System.out.println("Twoj raport zosta� wygenerowany w formacie doc\n");
+                        System.out.println("Twoj raport został wygenerowany w formacie doc\n");
                         continue;
                     }
+
 
                     break;
                 case "3":

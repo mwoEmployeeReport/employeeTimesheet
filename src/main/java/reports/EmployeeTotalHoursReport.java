@@ -1,16 +1,15 @@
 package reports;
 
+import java.util.Calendar;
+import java.util.Map;
+
 import dataModel.Project;
 import dataModel.Task;
 
-import java.util.Calendar;
-import java.util.GregorianCalendar;
-import java.util.HashMap;
-import java.util.Map;
+public class EmployeeTotalHoursReport extends iReporting {
 
-public class EmployeeTotalHoursReport extends iReporting{
-
-    public EmployeeTotalHoursReport(){}
+    public EmployeeTotalHoursReport() {
+    }
 
     @Override
     public void calculate(int year) {
@@ -29,21 +28,23 @@ public class EmployeeTotalHoursReport extends iReporting{
 
             }
         }
-
     }
-
 
     public void printReportToConsole() {
         for (Map.Entry entry : innerDataModel.entrySet()) {
             System.out.println("Employee: " + entry.getKey() + " Time worked: " + entry.getValue() + "\n");
+
         }
+
     }
 
+    @Override
     public void saveToPDF() {
-        System.out.println("Not yet implemented.");
+
     }
 
+    @Override
     public void saveToXLS() {
-        System.out.println("Not yet implemented.");
+
     }
 }
