@@ -17,6 +17,7 @@ public class EmployeeTotalHoursReport extends iReporting{
         Calendar calendar = Calendar.getInstance();
         for (Project p : dataModel.getProjectList()) {
                 for (Task t : p.getTaskList()) {
+                   if (t.getDate().getYear() == year) {
                     calendar.setTime(t.getDate());
                    if (calendar.get(Calendar.YEAR) ==year) {
                        innerDataModel.put(t.getAsignee().getName(), (int) (innerDataModel.getOrDefault(t.getAsignee().getName(), 0)+t.getTime()));
