@@ -13,10 +13,11 @@ public class Main {
         ImportDataFromXlx importDataFromXlx = new ImportDataFromXlx();
 
         boolean isLoggedIn = false;
+        System.out.println("Przed wybraniem raportu wciśnij '0' i podaj sciezke do danych \n");
 
         while (!isLoggedIn) {
-
-            System.out.println("Z ponizszej listy wybierz numer raportu/ wykresu, ktory chcesz wygenerowac\n");
+            System.out.println("Z ponizszej listy wybierz numer raportu/ wykresu, ktory chcesz wygenerowac. \n");
+            System.out.println("Menu");
             System.out.println("0 - Podaj lokalizacje folderu");
             System.out.println("1 - Raport: 'Ilosc godzin przepracowanych przez poszczegolnych pracownikow w wybranym roku'");
             System.out.println("2 - Raport: 'Ilosc godzin przepracowanych nad danym projektem w wybranym roku'");
