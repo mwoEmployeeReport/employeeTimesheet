@@ -34,10 +34,8 @@ public class Main {
             switch (value) {
 
                 case "0":
-
                     System.out.println(
                             "Podaj lokalizacje folderu");
-
                     String path = input.nextLine();
 
                     if (!path.equals(null)) {
@@ -50,14 +48,13 @@ public class Main {
                         break;
                     }
 
-
                 case "1":
                     System.out.println(
                             "Podaj rok");
                     String choice = input.nextLine();
                     EmployeeTotalHoursReport employeeTotalHoursReport = new EmployeeTotalHoursReport();
                     employeeTotalHoursReport.setDataModel(importDataFromXlx.getTimeSheetModel());
-                    employeeTotalHoursReport.calculate(2012);
+                    employeeTotalHoursReport.calculate(Integer.valueOf(choice));
                     employeeTotalHoursReport.printReportToConsole();
                     if (choice.equals("1")) {
                         System.out.println("Twoj raport został wygenerowany w formacie PDF\n");
