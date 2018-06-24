@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.Date;
 import java.util.Iterator;
 import java.io.FilenameFilter;
 
@@ -61,19 +62,17 @@ public class ImportDataFromXlx {
 
             for (int i = FIRST_ROW_TO_GET; i < sheet.getLastRowNum() + 1; i++) {
                 Row row = sheet.getRow(i);
-                if (row == null) {
-                } else {
                     Task task = new Task();
-
-                    task.setDate(row.getCell(0).getDateCellValue());
-                    task.setDescription(String.valueOf(row.getCell(1)));
+                    Cell d  = row.getCell(0);
+                    Cell e  = row.getCell(1);
                     Cell c = row.getCell(2);
-                    if (c != null) {
-                        task.setTime(row.getCell(2).getNumericCellValue());
-                    }
+                    if (d != null && e != null && c != null) {
+                        task.setDate(row.getCell(0).getDateCellValue());
+                    task.setDescription(String.valueOf(row.getCell(1)));
+                    task.setTime(row.getCell(2).getNumericCellValue());
                     task.setAsignee(employee);
                     newProject.addTask(task);
-                }
+                    }
             }
             timeSheetModel.addProject(newProject);
 
