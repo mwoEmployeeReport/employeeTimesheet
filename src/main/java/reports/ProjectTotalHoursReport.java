@@ -26,6 +26,7 @@ public class ProjectTotalHoursReport extends iReporting{
 //            	System.out.println("Mam rok: " + cal.get(Calendar.YEAR));
                    if (cal.get(Calendar.YEAR) == year) 
                        sumedTime += t.getTime();
+                   
                                              
                 }
                 
