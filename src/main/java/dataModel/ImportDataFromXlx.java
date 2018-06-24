@@ -5,6 +5,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Iterator;
+import java.io.FilenameFilter;
 
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Cell;
@@ -14,14 +15,14 @@ import org.apache.poi.ss.usermodel.Workbook;
 
 public class ImportDataFromXlx {
 
-    TimeSheetModel timeSheetModel = new TimeSheetModel();
+    TimeSheetModel timeSheetModel;
 
     Project newProject;
 
     Employee employee = null;
 
     public void readDataFromFile(File passedFile, String assignee) throws IOException {
-
+       timeSheetModel = new TimeSheetModel();
         FileInputStream inputStream = null;
         inputStream = new FileInputStream(passedFile);
         Workbook workbook = null;
@@ -68,33 +69,23 @@ public class ImportDataFromXlx {
 
     }
 
-    public void iterateAndFindFiles(String myDirectoryPath) throws IOException {
-        File dir = new File(myDirectoryPath);
-        File[] directoryListing = dir.listFiles();
-        if (directoryListing != null) {
-            for (File child : directoryListing) {
-                if (child.isDirectory()) {
-                    iterateAndFindFiles(child.getAbsoluteFile().getPath());
-                } else {
-                    String employeName = child.getName().replace(".xls", "");
-                    readDataFromFile(child.getAbsoluteFile(), employeName);
-                }
-            }
-        } else {
-
-        }
-    }
-
     public void findAllFiles(File fileList) throws IOException {
         try {
             File[] files = fileList.listFiles();
             for (File file : files) {
                 if (file.isDirectory()) {
                     findAllFiles(file);
+
                 } else {
-                    String employeName = file.getName().replace(".xls", "");
-                    readDataFromFile(file.getAbsoluteFile(), employeName);
-                }
+                    if (file.getName().endsWith(".xls")){
+                        String employeName = file.getName().replace(".xls", "");
+                        readDataFromFile(file.getAbsoluteFile(), employeName);
+                    }
+                    else {
+                        System.out.println("Plik " +file+" ma rozszerzenie inne niż .xls, więc nie będzie brany przy generowaniu raportów.");
+                    }
+
+            }
             }
         } catch  (FileNotFoundException e) {
             throw new RuntimeException(e);

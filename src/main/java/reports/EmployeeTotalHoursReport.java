@@ -16,7 +16,7 @@ public class EmployeeTotalHoursReport extends iReporting{
         for (Project p : dataModel.getProjectList()) {
                 for (Task t : p.getTaskList()) {
                    if (t.getDate().getYear() == year) {
-                       innerDataModel.put(t.getAsignee().getName(), innerDataModel.getOrDefault(t.getAsignee().getName(), 0)+t.getTime());
+                       innerDataModel.put(t.getAsignee().getName(), (int) (innerDataModel.getOrDefault(t.getAsignee().getName(), 0)+t.getTime()));
                    }
                 }
             }
