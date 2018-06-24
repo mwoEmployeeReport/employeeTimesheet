@@ -4,19 +4,15 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.Date;
 import java.util.Iterator;
-import java.io.FilenameFilter;
 
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
-import org.apache.xmlbeans.impl.xb.xsdschema.Public;
 
 public class ImportDataFromXlx {
-
 
     TimeSheetModel timeSheetModel;
 
@@ -32,7 +28,7 @@ public class ImportDataFromXlx {
 
     Employee employee = null;
 
-    public ImportDataFromXlx(){
+    public ImportDataFromXlx() {
         timeSheetModel = new TimeSheetModel();
     }
 
@@ -62,17 +58,17 @@ public class ImportDataFromXlx {
 
             for (int i = FIRST_ROW_TO_GET; i < sheet.getLastRowNum() + 1; i++) {
                 Row row = sheet.getRow(i);
-                    Task task = new Task();
-                    Cell d  = row.getCell(0);
-                    Cell e  = row.getCell(1);
-                    Cell c = row.getCell(2);
-                    if (d != null && e != null && c != null) {
-                        task.setDate(row.getCell(0).getDateCellValue());
+                Task task = new Task();
+                Cell d = row.getCell(0);
+                Cell e = row.getCell(1);
+                Cell c = row.getCell(2);
+                if (d != null && e != null && c != null) {
+                    task.setDate(row.getCell(0).getDateCellValue());
                     task.setDescription(String.valueOf(row.getCell(1)));
                     task.setTime(row.getCell(2).getNumericCellValue());
                     task.setAsignee(employee);
                     newProject.addTask(task);
-                    }
+                }
             }
             timeSheetModel.addProject(newProject);
 
@@ -90,18 +86,16 @@ public class ImportDataFromXlx {
                     findAllFiles(file);
 
                 } else {
-                    if (file.getName().endsWith(".xls")){
+                    if (file.getName().endsWith(".xls")) {
                         String employeName = file.getName().replace(".xls", "");
                         readDataFromFile(file.getAbsoluteFile(), employeName);
-                    }
-                    else {
-                        System.out.println("Plik " +file+" ma rozszerzenie inne niż .xls, więc nie będzie brany przy generowaniu raportów.");
-
+                    } else {
+                        System.out.println("Plik " + file + " ma rozszerzenie inne niż .xls, więc nie będzie brany przy generowaniu raportów.");
                     }
 
+                }
             }
-            }
-        } catch  (FileNotFoundException e) {
+        } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
     }
