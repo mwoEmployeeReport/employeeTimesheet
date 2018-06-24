@@ -96,6 +96,7 @@ public class ImportDataFromXlx {
                     }
                     else {
                         System.out.println("Plik " +file+" ma rozszerzenie inne niż .xls, więc nie będzie brany przy generowaniu raportów.");
+
                     }
 
             }
