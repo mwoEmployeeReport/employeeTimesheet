@@ -15,7 +15,19 @@ import org.apache.poi.ss.usermodel.Workbook;
 
 public class ImportDataFromXlx {
 
+
     TimeSheetModel timeSheetModel;
+
+    public TimeSheetModel getTimeSheetModel() {
+        return timeSheetModel;
+    }
+
+    public void setTimeSheetModel(TimeSheetModel timeSheetModel) {
+        this.timeSheetModel = timeSheetModel;
+    }
+
+    TimeSheetModel timeSheetModel = new TimeSheetModel();
+
 
     Project newProject;
 

@@ -3,19 +3,23 @@ package reports;
 import dataModel.Project;
 import dataModel.Task;
 
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.Map;
 
 public class EmployeeTotalHoursReport extends iReporting{
 
-    EmployeeTotalHoursReport(){}
+    public EmployeeTotalHoursReport(){}
 
     @Override
     public void calculate(int year) {
-
+        Calendar calendar = Calendar.getInstance();
         for (Project p : dataModel.getProjectList()) {
                 for (Task t : p.getTaskList()) {
                    if (t.getDate().getYear() == year) {
+                    calendar.setTime(t.getDate());
+                   if (calendar.get(Calendar.YEAR) ==year) {
                        innerDataModel.put(t.getAsignee().getName(), (int) (innerDataModel.getOrDefault(t.getAsignee().getName(), 0)+t.getTime()));
                    }
                 }

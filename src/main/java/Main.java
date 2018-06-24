@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.Scanner;
 
 import dataModel.ImportDataFromXlx;
+import reports.EmployeeTotalHoursReport;
 
 public class Main {
 
@@ -51,12 +52,13 @@ public class Main {
 
 
                 case "1":
-
                     System.out.println(
-                            "To jest Twoj raport. Jesli chcesz importowac raport do formatu PDF nacisnij 1, jesli do formatu doc wcisnij 2. Jesli chcesz wrocic do menu glownego wcisnij cokolwiek");
-
+                            "Podaj rok");
                     String choice = input.nextLine();
-
+                    EmployeeTotalHoursReport employeeTotalHoursReport = new EmployeeTotalHoursReport();
+                    employeeTotalHoursReport.setDataModel(importDataFromXlx.getTimeSheetModel());
+                    employeeTotalHoursReport.calculate(Integer.valueOf(choice));
+                    employeeTotalHoursReport.printReportToConsole();
                     if (choice.equals("1")) {
                         System.out.println("Twoj raport został wygenerowany w formacie PDF\n");
                         continue;
