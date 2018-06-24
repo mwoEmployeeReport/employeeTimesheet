@@ -14,15 +14,22 @@ public class EmployeeTotalHoursReport extends iReporting {
     public EmployeeTotalHoursReport(){}
 
     @Override
-    public void calculate(int year) {
-        for (Project p : dataModel.getProjectList()) {
-            for (Task t : p.getTaskList()) {
-                if (t.getDate().getYear() == year) {}
+    public void calculate(int year) 
+    {
+    	
+        for (Project p : dataModel.getProjectList()) 
+        {
+            for (Task t : p.getTaskList()) 
+            {
+                if (t.getDate().getYear() == year) 
+                {
+                	
+                }
             }
         }
     }
 
- 
+    
 
     
 

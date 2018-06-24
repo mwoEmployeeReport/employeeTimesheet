@@ -80,20 +80,20 @@ public class Main {
                 	
                 	System.out.println(
                             "Podaj rok");
-                    String choice2 = input.nextLine();
+                    String choice11 = input.nextLine();
                     ProjectTotalHoursReport ProjectTotalHoursReport = new ProjectTotalHoursReport();
                     ProjectTotalHoursReport.setDataModel(importDataFromXlx.getTimeSheetModel());
-                    ProjectTotalHoursReport.calculate(Integer.valueOf(choice2));
+                    ProjectTotalHoursReport.calculate(Integer.valueOf(choice11));
                     ProjectTotalHoursReport.printReportToConsole();
                     System.out.println(
                             "To jest Twoj raport. Jesli chcesz importowac raport do formatu PDF nacisnij 1, jesli do formatu doc wcisnij 2. Jesli chcesz wrocic do menu glownego wcisnij cokolwiek");
 
-                    String choice21 = input.nextLine();
+                    String choice2 = input.nextLine();
 
-                    if (choice21.equals("1")) {
+                    if (choice2.equals("1")) {
                         System.out.println("Twoj raport został wygenerowany w formacie PDF\n");
                         continue;
-                    } else if (choice21.equals("2")) {
+                    } else if (choice2.equals("2")) {
                         System.out.println("Twoj raport został wygenerowany w formacie doc\n");
                         continue;
                     }

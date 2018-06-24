@@ -1,5 +1,7 @@
 package reports;
 
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.Map;
 
 import dataModel.Project;
@@ -13,17 +15,20 @@ public class ProjectTotalHoursReport extends iReporting{
 	@Override
     public void calculate(int year) 
 	{
-		double sumedTime= 0.0;
+		
+		double sumedTime = 0.0;
         for (Project p : dataModel.getProjectList()) 
         {
                 for (Task t : p.getTaskList()) 
                 {
-                   if (t.getDate().getYear() == year) 
-                   
+                GregorianCalendar cal = new GregorianCalendar();
+                cal.setTime(t.getDate());
+//            	System.out.println("Mam rok: " + cal.get(Calendar.YEAR));
+                   if (cal.get(Calendar.YEAR) == year) 
                        sumedTime += t.getTime();
-                   
-               
+                                             
                 }
+                
                 System.out.println(p.getName() + " " + String.valueOf(sumedTime));
         }
         
