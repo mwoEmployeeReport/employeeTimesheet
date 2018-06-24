@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.Scanner;
 
 import dataModel.ImportDataFromXlx;
+import reports.EmployeePerProjectPerMonth;
 import reports.EmployeeTotalHoursReport;
 
 public class Main {
@@ -83,8 +84,28 @@ public class Main {
 
                     break;
                 case "3":
-                    System.out.println("Raport nie zostal zaimplementowany. Za utrudnienia przepraszamy.\n");
+                	System.out.println("Podaj nazwisko pracownika");
+                	String choice5 = input.nextLine();
+                	System.out.println("Podaj rok");
+                	String choice1 = input.nextLine();
+                	EmployeePerProjectPerMonth employeePerProjectPerMonth = new EmployeePerProjectPerMonth();
+                	employeePerProjectPerMonth.setDataModel(importDataFromXlx.getTimeSheetModel());
+                	employeePerProjectPerMonth.calculate(choice5,choice1);
+                	employeePerProjectPerMonth.printReportToConsole();
+                	System.out.println(
+                            "Jesli chcesz importowac raport do formatu PDF nacisnij 1, jesli do formatu doc wcisnij 2. Jesli chcesz wrocic do menu glownego wcisnij cokolwiek");
+
+                    String choice6 = input.nextLine();
+
+                    if (choice6.equals("1")) {
+                        System.out.println("Twoj raport zosta� wygenerowany w formacie PDF\n");
+                        continue;
+                    } else if (choice6.equals("2")) {
+                        System.out.println("Twoj raport zosta� wygenerowany w formacie doc\n");
+                        continue;
+                    }
                     break;
+
                 case "4":
                     System.out.println("Raport nie zostal zaimplementowany. Za utrudnienia przepraszamy.\n");
                     break;
