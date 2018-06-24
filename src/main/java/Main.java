@@ -56,6 +56,8 @@ public class Main {
                     employeeTotalHoursReport.setDataModel(importDataFromXlx.getTimeSheetModel());
                     employeeTotalHoursReport.calculate(Integer.valueOf(choice));
                     employeeTotalHoursReport.printReportToConsole();
+                    System.out.println(employeeTotalHoursReport.innerDataModel.size());
+                    employeeTotalHoursReport.saveToPDF();
                     if (choice.equals("1")) {
                         System.out.println("Twoj raport został wygenerowany w formacie PDF\n");
                         continue;
